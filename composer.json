@@ -1,0 +1,21 @@
+{
+  "name": "rockschtar/wordpress-database-fluent",
+  "description": "Fluent WordPress database ($wpdb) wrapper",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type" : "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Stefan Helmer",
+      "email": "rockschtar@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rockschtar\\WordPress\\DatabaseFluent\\": "src"
+    }
+  }
+}
