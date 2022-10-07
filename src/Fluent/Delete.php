@@ -3,11 +3,14 @@
 namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
+use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\WhereFormatTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\WhereTrait;
 
 class Delete implements ExecuteInterface {
+
+    use SupressErrorsTrait;
 
     use TableTrait;
 

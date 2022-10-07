@@ -4,8 +4,11 @@ namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
 use Rockschtar\WordPress\DatabaseFluent\Traits\QueryTrait;
+use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 
 class Query implements ExecuteInterface {
+
+    use SupressErrorsTrait;
 
     use QueryTrait;
 

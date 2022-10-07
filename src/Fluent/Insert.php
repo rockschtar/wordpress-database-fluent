@@ -5,9 +5,12 @@ namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
 use Rockschtar\WordPress\DatabaseFluent\Traits\DataTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\FormatTrait;
+use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 
 class Insert implements ExecuteInterface {
+
+    use SupressErrorsTrait;
 
     use TableTrait;
 
