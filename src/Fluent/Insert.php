@@ -8,7 +8,7 @@ use Rockschtar\WordPress\DatabaseFluent\Traits\FormatTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 
-class Insert implements ExecuteInterface {
+class Insert extends Execute {
 
     use SupressErrorsTrait;
 

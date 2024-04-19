@@ -4,11 +4,8 @@ namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
 use Rockschtar\WordPress\DatabaseFluent\Traits\QueryTrait;
-use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 
-class Query implements ExecuteInterface {
-
-    use SupressErrorsTrait;
+class Query extends Execute {
 
     use QueryTrait;
 
@@ -16,13 +13,12 @@ class Query implements ExecuteInterface {
      * @return false|int
      * @throws DatabaseException
      */
-    public function execute() {
-        global $wpdb;
+    public function execute() : false|int {
 
-        $result = $wpdb->query($this->getQuery());
+        $result = $this->wpdb->query($this->getQuery());
 
-        if (!empty($wpdb->last_error)) {
-            throw new DatabaseException($wpdb->last_error);
+        if (!empty($this->wpdb->last_error)) {
+            throw new DatabaseException($this->wpdb->last_error);
         }
 
         return $result;

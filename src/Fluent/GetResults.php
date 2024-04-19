@@ -5,22 +5,21 @@ namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
 use Rockschtar\WordPress\DatabaseFluent\Traits\OutputTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\QueryTrait;
-use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
-
-class GetResults implements ExecuteInterface {
-
-    use SupressErrorsTrait;
+class GetResults extends Execute {
 
     use QueryTrait;
 
     use OutputTrait;
 
+    /**
+     * @throws DatabaseException
+     */
     public function execute(): ?array {
-        global $wpdb;
-        $wpdb->last_error = '';
-        $result = $wpdb->get_results($this->getQuery(), $this->output);
+
+        $this->wpdb->last_error = '';
+        $result = $this->wpdb->get_results($this->getQuery(), $this->output);
         if (!empty($wpdb->last_error)) {
-            throw new DatabaseException($wpdb->last_error);
+            throw new DatabaseException($this->wpdb->last_error);
         }
 
         return $result;

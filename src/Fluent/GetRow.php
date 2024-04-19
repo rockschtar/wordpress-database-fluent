@@ -5,20 +5,14 @@ namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
 use Rockschtar\WordPress\DatabaseFluent\Traits\OutputTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\QueryTrait;
-use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 
-class GetRow implements ExecuteInterface {
-
-    use SupressErrorsTrait;
+class GetRow extends Execute {
 
     use QueryTrait;
 
     use OutputTrait;
 
-    /**
-     * @var int
-     */
-    protected $y = 0;
+    protected int $y = 0;
 
     /**
      * @param int $y Row to return. Indexed from 0.
@@ -30,16 +24,13 @@ class GetRow implements ExecuteInterface {
     }
 
     /**
-     * @return array|null|object
      * @throws DatabaseException
      */
-    public function execute() {
-        global $wpdb;
+    public function execute() : array|null|object {
+        $result = $this->wpdb->get_row($this->getQuery(), $this->output, $this->y);
 
-        $result = $wpdb->get_row($this->getQuery(), $this->output, $this->y);
-
-        if (!empty($wpdb->last_error)) {
-            throw new DatabaseException($wpdb->last_error);
+        if (!empty($this->wpdb->last_error)) {
+            throw new DatabaseException($this->wpdb->last_error);
         }
 
         return $result;
