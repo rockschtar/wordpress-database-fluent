@@ -2,8 +2,8 @@
 
 namespace Rockschtar\WordPress\DatabaseFluent\Traits;
 
-trait DataTrait {
-
+trait DataTrait
+{
     /**
      * @var array
      */
@@ -13,9 +13,9 @@ trait DataTrait {
      * @param array $data
      * @return static
      */
-    public function data(array $data): self {
+    public function data(array $data): self
+    {
         $this->data = $data;
         return $this;
     }
-
 }

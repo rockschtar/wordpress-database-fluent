@@ -7,8 +7,8 @@ use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\WhereFormatTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\WhereTrait;
 
-class Delete extends Execute{
-
+class Delete extends Execute
+{
     use TableTrait;
 
     use WhereTrait;
@@ -18,7 +18,8 @@ class Delete extends Execute{
     /**
      * @throws DatabaseException
      */
-    public function execute(): int|false {
+    public function execute(): int|false
+    {
 
         $result = $this->wpdb->delete($this->table, $this->where, $this->whereFormat);
 

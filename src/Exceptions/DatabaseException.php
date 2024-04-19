@@ -1,9 +1,11 @@
 <?php
+
 /**
  * @author: StefanHelmer
  */
+
 namespace Rockschtar\WordPress\DatabaseFluent\Exceptions;
 
-class DatabaseException extends \Exception {
-
+class DatabaseException extends \Exception
+{
 }

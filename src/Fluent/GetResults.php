@@ -5,8 +5,9 @@ namespace Rockschtar\WordPress\DatabaseFluent\Fluent;
 use Rockschtar\WordPress\DatabaseFluent\Exceptions\DatabaseException;
 use Rockschtar\WordPress\DatabaseFluent\Traits\OutputTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\QueryTrait;
-class GetResults extends Execute {
 
+class GetResults extends Execute
+{
     use QueryTrait;
 
     use OutputTrait;
@@ -14,7 +15,8 @@ class GetResults extends Execute {
     /**
      * @throws DatabaseException
      */
-    public function execute(): ?array {
+    public function execute(): ?array
+    {
 
         $this->wpdb->last_error = '';
         $result = $this->wpdb->get_results($this->getQuery(), $this->output);

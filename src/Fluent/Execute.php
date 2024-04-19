@@ -12,5 +12,5 @@ abstract class Execute
     }
 
 
-    abstract public function execute() : mixed;
+    abstract public function execute(): mixed;
 }

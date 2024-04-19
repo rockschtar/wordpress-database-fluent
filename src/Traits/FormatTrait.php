@@ -2,8 +2,8 @@
 
 namespace Rockschtar\WordPress\DatabaseFluent\Traits;
 
-trait FormatTrait {
-
+trait FormatTrait
+{
     /**
      * @var array
      */
@@ -13,9 +13,9 @@ trait FormatTrait {
      * @param array $format
      * @return static
      */
-    public function format(array $format): self {
+    public function format(array $format): self
+    {
         $this->format = $format;
         return $this;
     }
-
 }

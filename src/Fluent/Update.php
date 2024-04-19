@@ -9,8 +9,8 @@ use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\WhereFormatTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\WhereTrait;
 
-class Update extends Execute {
-
+class Update extends Execute
+{
     use TableTrait;
 
     use DataTrait;
@@ -24,7 +24,8 @@ class Update extends Execute {
     /**
      * @throws DatabaseException
      */
-    public function execute() : int|false {
+    public function execute(): int|false
+    {
 
         $result = $this->wpdb->update($this->table, $this->data, $this->where, $this->format, $this->whereFormat);
 

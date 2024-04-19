@@ -8,8 +8,8 @@ use Rockschtar\WordPress\DatabaseFluent\Traits\FormatTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\SupressErrorsTrait;
 use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 
-class Insert extends Execute {
-
+class Insert extends Execute
+{
     use SupressErrorsTrait;
 
     use TableTrait;
@@ -22,7 +22,8 @@ class Insert extends Execute {
      * @return int
      * @throws DatabaseException
      */
-    public function execute(): int {
+    public function execute(): int
+    {
         global $wpdb;
 
         $result = $wpdb->insert($this->table, $this->data, $this->format);
@@ -33,5 +34,4 @@ class Insert extends Execute {
 
         return $wpdb->insert_id;
     }
-
 }

@@ -2,17 +2,17 @@
 
 namespace Rockschtar\WordPress\DatabaseFluent\Traits;
 
-trait WhereTrait {
-
+trait WhereTrait
+{
     protected $where = [];
 
     /**
      * @param array $where
      * @return static
      */
-    public function where(array $where): self {
+    public function where(array $where): self
+    {
         $this->where = $where;
         return $this;
     }
-
 }

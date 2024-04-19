@@ -2,17 +2,17 @@
 
 namespace Rockschtar\WordPress\DatabaseFluent\Traits;
 
-trait WhereFormatTrait {
-
+trait WhereFormatTrait
+{
     protected $whereFormat = [];
 
     /**
      * @param array $whereFormat
      * @return static
      */
-    public function whereFormat(array $whereFormat): self {
+    public function whereFormat(array $whereFormat): self
+    {
         $this->whereFormat = $whereFormat;
         return $this;
     }
-
 }
