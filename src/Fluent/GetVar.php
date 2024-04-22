@@ -39,10 +39,10 @@ class GetVar extends Execute
      */
     public function execute(): ?string
     {
-
+        $this->wpdb->last_error = '';
         $result = $this->wpdb->get_var($this->getQuery(), $this->x, $this->y);
 
-        if ($result === null) {
+        if (!empty($this->wpdb->last_error)) {
             throw new DatabaseException($this->wpdb->last_error);
         }
 

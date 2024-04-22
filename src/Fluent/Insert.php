@@ -10,7 +10,6 @@ use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 
 class Insert extends Execute
 {
-    use SupressErrorsTrait;
 
     use TableTrait;
 
@@ -24,14 +23,12 @@ class Insert extends Execute
      */
     public function execute(): int
     {
-        global $wpdb;
-
-        $result = $wpdb->insert($this->table, $this->data, $this->format);
+        $result = $this->wpdb->insert($this->table, $this->data, $this->format);
 
         if ($result === false) {
-            throw new DatabaseException($wpdb->last_error);
+            throw new DatabaseException($this->wpdb->last_error);
         }
 
-        return $wpdb->insert_id;
+        return $this->wpdb->insert_id;
     }
 }
