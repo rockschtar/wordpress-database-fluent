@@ -10,7 +10,6 @@ use Rockschtar\WordPress\DatabaseFluent\Traits\TableTrait;
 
 class Insert extends Execute
 {
-
     use TableTrait;
 
     use DataTrait;

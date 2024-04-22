@@ -31,7 +31,7 @@ class WPDB
     private static function instance(): static
     {
         if (static::$instance === null) {
-            static::$instance = new static;
+            static::$instance = new static();
         }
 
         return static::$instance;
