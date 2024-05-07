@@ -12,70 +12,38 @@ use Rockschtar\WordPress\DatabaseFluent\Fluent\Update;
 
 class WPDB
 {
-    protected static self|null $instance = null;
-
-    protected static \wpdb $wpdb;
-
-    private function __construct(?\wpdb $wpdb = null)
+    public static function insert(?\wpdb $wpdb = null): Insert
     {
-
-        if ($wpdb === null) {
-            global $wpdb;
-        }
-
-        $wpdb->suppress_errors = true;
-
-        self::$wpdb = $wpdb;
+        return new Insert($wpdb);
     }
 
-    private static function instance(): static
+    public static function update(?\wpdb $wpdb = null): Update
     {
-        if (static::$instance === null) {
-            static::$instance = new static();
-        }
-
-        return static::$instance;
+        return new Update($wpdb);
     }
 
-    public static function wpdb(?\wpdb $wpdb): WPDB
+    public static function delete(?\wpdb $wpdb = null): Delete
     {
-        return new WPDB($wpdb);
+        return new Delete($wpdb);
     }
 
-    public static function insert(): Insert
+    public static function results(?\wpdb $wpdb = null): GetResults
     {
-        $instance = self::instance();
-
-        return new Insert(self::instance()::$wpdb);
+        return new GetResults($wpdb);
     }
 
-    public static function update(): Update
+    public static function getVar(?\wpdb $wpdb = null): GetVar
     {
-        return new Update(self::instance()::$wpdb);
+        return new GetVar($wpdb);
     }
 
-    public static function delete(): Delete
+    public static function query(?\wpdb $wpdb = null): Query
     {
-        return new Delete(self::instance()::$wpdb);
+        return new Query($wpdb);
     }
 
-    public static function results(): GetResults
+    public static function getRow(?\wpdb $wpdb = null): GetRow
     {
-        return new GetResults(self::instance()::$wpdb);
-    }
-
-    public static function getVar(): GetVar
-    {
-        return new GetVar(self::instance()::$wpdb);
-    }
-
-    public static function query(): Query
-    {
-        return new Query(self::instance()::$wpdb);
-    }
-
-    public static function getRow(): GetRow
-    {
-        return new GetRow(self::instance()::$wpdb);
+        return new GetRow($wpdb);
     }
 }

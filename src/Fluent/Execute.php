@@ -6,8 +6,14 @@ abstract class Execute
 {
     protected \wpdb $wpdb;
 
-    public function __construct(\wpdb $wpdb)
+    public function __construct(?\wpdb $wpdb = null)
     {
+        if ($wpdb === null) {
+            global $wpdb;
+        }
+
+        $wpdb->suppress_errors = true;
+
         $this->wpdb = $wpdb;
     }
 
