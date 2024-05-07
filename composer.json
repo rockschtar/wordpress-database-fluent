@@ -3,7 +3,7 @@
   "description": "Fluent WordPress database ($wpdb) wrapper",
   "minimum-stability": "stable",
   "license": "MIT",
-  "type" : "wordpress-plugin",
+  "type" : "library",
   "authors": [
     {
       "name": "Stefan Helmer",
