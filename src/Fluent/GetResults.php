@@ -20,7 +20,7 @@ class GetResults extends Execute
 
         $this->wpdb->last_error = '';
         $result = $this->wpdb->get_results($this->getQuery(), $this->output);
-        if (!empty($wpdb->last_error)) {
+        if (!empty($this->wpdb->last_error)) {
             throw new DatabaseException($this->wpdb->last_error);
         }
 
